@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="library/react.js"></script>
+<script src="library/react-dom.js"></script>
+<script src="library/babel.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div id="myApp"></div>
+	<script type="text/babel">
+	/*
+		Concept of React JS State
+	*/
+		var MyComponent = React.createClass({
+
+			getInitialState	: function() {
+				return {checked : true};
+			},
+
+			render	: function() {
+				var msg;
+				if(this.state.checked)
+					msg = 'checked';
+				else
+					msg = 'not checked';
+				return (
+					<div className="container">
+						<h1>React JS : States</h1>
+						<hr/><br/>
+						<input type="checkbox" defaultChecked={this.state.checked} onChange={this.checkChange}/>	
+						<br/><p>This is {msg}!</p>
+					</div>
+				);	
+			},
+
+			checkChange	: function() {
+				this.setState({checked : !this.state.checked});
+			}
+		});
+		var date = new Date();
+		ReactDOM.render(<MyComponent/>, 
+						document.getElementById('myApp'));
+		
+	</script>
+</body>
+</html>

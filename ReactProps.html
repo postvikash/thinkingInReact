@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learning React</title>
+<script src="library/react.js"></script>
+<script src="library/react-dom.js"></script>
+<script src="library/babel.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div id="myApp"></div>
+	<script type="text/babel">
+	/*
+		Concept of React JS Props and Children
+	*/
+		var MyComponent = React.createClass({
+			render	: function() {
+				return (
+					<div className="container">
+						<h1>React JS : Properties aka Props</h1>
+						<hr/><br/>
+						<p>Passing system date dynamically to the component!! {this.props.datetime}</p>
+						<br/>
+						<p>ReactJS Children Props : {this.props.children}</p>
+					</div>
+				);	
+			}
+		});
+		var date = new Date();
+		ReactDOM.render(<MyComponent datetime={date.toString()}>Text Between Custom Component</MyComponent>, 
+						document.getElementById('myApp'));
+		
+	</script>
+</body>
+</html>

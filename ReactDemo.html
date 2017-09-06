@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learning React</title>
+<script src="library/react.js"></script>
+<script src="library/react-dom.js"></script>
+<script src="library/babel.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+		
+		var MyComponent = React.createClass({
+  			render: function() {
+				return (
+					<div><h1>Hello ReactJS</h1>
+						<hr/>
+						<br/><p>Simple Component Demo in ReactJS</p>
+					</div>
+    			);
+		}
+});
+
+		ReactDOM.render(<MyComponent/>, document.getElementById("example"));
+	</script>
+</body>
+</html>

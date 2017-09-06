@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="library/react.js"></script>
+<script src="library/react-dom.js"></script>
+<script src="library/babel.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div id="commentApp" class="container"></div>
+	<script type="text/babel">
+	/*
+		React JS First Application
+	*/
+		var CommentComponent = React.createClass({
+
+			getInitialState	: function() {
+				return {editMode : false};
+			},
+
+			render	: function() {
+
+				if(this.state.editMode)
+					return this.renderEditMode();
+				else
+					return this.renderNormalMode();
+			},
+
+			renderNormalMode : function() {
+				
+				return (
+					<div className="hero">
+						<p align="center">{this.props.name}</p>
+						<button onClick={this.onEditClick} className="btn btn-warning">Edit</button>
+						&nbsp;&nbsp;&nbsp;
+						<button onClick={this.onRemoveClick} className="btn btn-danger">Remove</button>
+					</div>
+				);	
+			},
+
+			renderEditMode : function() {
+				
+				return (
+					<div className="hero">
+						<textarea ref="newText" defaultValue={this.props.name}></textarea><br/>
+						<button onClick={this.onSaveClick} className="btn btn-success">Save</button>
+					</div>
+				);	
+			},
+
+			onEditClick	: function() {
+				console.log("Edit button clicked!");
+				this.setState({editMode:true});
+			},
+			
+			onRemoveClick	: function() {
+				console.log("Remove button clicked!");
+				
+			},
+
+			onSaveClick	: function() {
+				console.log("Save button clicked!");
+				console.log('Entered text is : '+this.refs.newText.value);
+				this.setState({editMode:false});
+			}
+		});
+
+		ReactDOM.render(<div><CommentComponent name="User Comment1"/><hr/><CommentComponent name="User Comment2"/></div>, 
+						document.getElementById('commentApp'));
+		
+	</script>
+</body>
+</html>
